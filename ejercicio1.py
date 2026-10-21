@@ -14,11 +14,9 @@ def fmap(key, value, context):
     cantVotosLocal = valores[1]
     cantVotosVisitante = valores[2]
 
-    if int(cantVotosLocal) > int(cantVotosVisitante):
-          context.write(int(equipoLocal), 1)
-
-    elif int(cantVotosLocal) < int(cantVotosVisitante):
-          context.write(int(equipoVisitante), 1)
+    
+    context.write(int(equipoVisitante), cantVotosVisitante)
+    context.write(int(equipoLocal), cantVotosLocal)
 
 def fmap2(key, value, context):
     valores = value.split()
@@ -27,11 +25,8 @@ def fmap2(key, value, context):
     cantVotosLocal = valores[1]
     cantVotosVisitante = valores[2]
 
-    if int(cantVotosLocal) > int(cantVotosVisitante):
-          context.write(int(equipoLocal), cantVotosLocal)
-
-    elif int(cantVotosLocal) < int(cantVotosVisitante):
-          context.write(int(equipoVisitante), cantVotosVisitante)
+    context.write(int(equipoVisitante), cantVotosVisitante)
+    context.write(int(equipoLocal), cantVotosLocal)
 
 def fcombiner(key, values, context):
     total = 0
